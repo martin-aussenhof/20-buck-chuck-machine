@@ -7,12 +7,17 @@ import {
   Pagination,
   Highlight,
   ClearRefinements,
-  RefinementList,
+  CurrentRefinements,
   Configure,
-  NumericMenu,
+  SortBy,
 } from 'react-instantsearch-dom';
 import PropTypes from 'prop-types';
 import './App.css';
+import './algolia.css';
+
+import PriceRefinement from './Components/PriceRefinement';
+import TypeRefinement from './Components/TypeRefinement';
+import QualityRefinement from './Components/QualityRefinement';
 
 const searchClient = algoliasearch(
   'LU2EQJQULJ',
@@ -23,50 +28,28 @@ class App extends Component {
   render() {
     return (
       <div className="ais-InstantSearch">
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
-          integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8="
-          crossorigin="anonymous"
-        />
-        <h1>20 Buck Chuck</h1>
+        <div className="title-bar">20 Buck Chuck</div>
+
         <InstantSearch indexName="dev_WINE" searchClient={searchClient}>
           <div className="left-panel">
             <ClearRefinements />
-            <h2>Red or White</h2>
-            (Sorry White Stripes, but you gotta decide.)
-            <RefinementList attribute="type" />
-            <h2>Bucks to Spare?</h2>
-            <NumericMenu
-              attribute="price"
-              items={[
-                { label: 'Twenty Buck Chuck (below £20)', end: 20 },
-                { label: 'Classy Student (£21 - £40)', start: 21, end: 40 },
-                { label: 'I have a Job now! (£41 - £60)', start: 41, end: 60 },
-                { label: 'We met on Tinder (£61 - £100)', start: 61, end: 100 },
-                {
-                  label: 'I think they are the One! (£101 - £300)',
-                  start: 101,
-                  end: 300,
-                },
-                { label: 'YOLO (£300+)', start: 301 },
-              ]}
-            />
-            <h2>We asked Jacques from the Bar.</h2>
-            Here's what he thinks...
-            <NumericMenu
-              attribute="quality"
-              items={[
-                { label: 'Ideal for the in-laws', end: 90 },
-                { label: 'We usually export these', start: 91, end: 93 },
-                { label: 'Perfect for your friends', start: 94, end: 97 },
-                { label: 'What Jacques would drink', start: 98 },
-              ]}
-            />
-            <Configure hitsPerPage={16} />
+            <TypeRefinement />
+            <PriceRefinement />
+            <QualityRefinement />
+            <Configure hitsPerPage={8} />
           </div>
           <div className="right-panel">
             <SearchBox />
+            <CurrentRefinements />
+            <span className="domain">Sort by:</span>
+            <SortBy
+              defaultRefinement="dev_WINE"
+              items={[
+                { value: 'dev_WINE', label: 'Relevance' },
+                { value: 'dev_WINE_price_desc', label: 'Price desc.' },
+                { value: 'dev_WINE_price_asc', label: 'Price asc.' },
+              ]}
+            />
             <Hits hitComponent={Hit} />
             <Pagination />
           </div>
@@ -78,11 +61,15 @@ class App extends Component {
 
 function Hit(props) {
   return (
-    <article>
+    <article className="article-centred text-colour-override">
+      <span className="quality-badge">{props.hit.quality}</span>
+      <img src={props.hit.image} alt={props.hit.name} />
       <h1>
         <Highlight attribute="name" hit={props.hit} />
       </h1>
-      £{props.hit.price} | {props.hit.quality}
+      <span className="domain">
+        {props.hit.domain} - £{props.hit.price}
+      </span>
     </article>
   );
 }

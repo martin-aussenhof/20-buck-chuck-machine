@@ -1,17 +1,80 @@
 body {
-  font-family: sans-serif;
+  font-family: Helvetica, sans-serif;
   padding: 1em;
 }
 .ais-SearchBox {
   margin: 1em 0;
+  color: #000 !important;
 }
 .ais-Pagination {
   margin-top: 1em;
 }
 .left-panel {
   float: left;
-  width: 250px;
+  width: 290px;
 }
 .right-panel {
-  margin-left: 260px;
+  margin-left: 300px;
+}
+
+.title-bar {
+  margin-bottom: 20px;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  height: 1.5em;
+  width: 100%;
+  background-color: #e96990;
+  color: #fff;
+  text-align: center;
+  vertical-align: center;
+  font-size: 3em;
+  font-family: 'Brush Script MT';
+}
+
+.handwritting {
+  font-family: 'Brush Script MT';
+}
+
+.article-centred {
+  text-align: center;
+}
+
+.quality-badge {
+  font-size: 16px;
+  padding: 6px 6px 6px 6px;
+  background-color: #e96990;
+  color: #fff;
+  border: 1px solid #f06790;
+  border-radius: 50%;
+  display: inline-block;
+  font-weight: bold;
+  z-index: 100;
+  position: absolute;
+  margin-left: 120px;
+}
+
+.text-colour-override {
+  font-size: 0.8rem !important;
+  color: #000 !important;
+}
+
+.ais-NumericMenu-labelText {
+  font-size: 0.8rem !important;
+}
+
+h1 {
+  font-family: 'Brush Script MT';
+  color: #e96990;
+  font-size: 1.4rem !important;
+  margin: 0em 0 0em 0;
+}
+
+h2 {
+  margin: 1em 0 0em 0;
+}
+
+.domain {
+  /* font-style: italic; */
+  font-family: 'Brush Script MT';
+  font-size: 1.2rem;
 }
