@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/20-buck-chuck-machine/precache-manifest.5cbf9f5b06f01dc7f596aba3293e5f66.js"
+  "/20-buck-chuck/precache-manifest.9809fbef2c9ff33d20970ff041c34ca3.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/20-buck-chuck-machine/index.html", {
+workbox.routing.registerNavigationRoute("/20-buck-chuck/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
