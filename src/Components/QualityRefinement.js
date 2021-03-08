@@ -6,7 +6,7 @@ class QualityRefinement extends React.Component {
     return (
       <div>
         <h2 className="handwritting">
-          We asked Jacques from the Bar. Here's what he thinks...
+          We asked Jacques from the Bar. Here&apos;s what he thinks...
         </h2>
 
         <NumericMenu

@@ -62,14 +62,13 @@ class App extends Component {
 function Hit(props) {
   return (
     <article className="article-centred text-colour-override">
+      <span className="price-badge">£{props.hit.price}</span>
       <span className="quality-badge">{props.hit.quality}</span>
       <img src={props.hit.image} alt={props.hit.name} />
       <h1>
         <Highlight attribute="name" hit={props.hit} />
       </h1>
-      <span className="domain">
-        {props.hit.domain} - £{props.hit.price}
-      </span>
+      <span className="domain">{props.hit.domain}</span>
     </article>
   );
 }

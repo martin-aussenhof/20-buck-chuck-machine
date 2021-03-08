@@ -1,4 +1,4 @@
-# 5-buck-chuck-machine
+# 20 Buck Chuck Machine
 
 This application showcases some of the Algolia search engine features with a wine finding platform as an example.
 
